@@ -1,0 +1,9 @@
+[package]
+edition = "2021"
+name = "dps"
+version = "0.1.0"
+[dependencies]
+"." = "*"
+r definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
