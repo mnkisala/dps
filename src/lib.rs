@@ -59,6 +59,18 @@ mod tests {
     }
 
     #[test]
+    fn stereo_example() {
+        let input_l = [1.0; 512];
+        let input_r = [1.0; 512];
+        let mut output_l = [0.0; 512];
+        let mut output_r = [0.0; 512];
+
+        dps::copy([&input_l, &input_r])
+            .then(dps::gain(0.5.into()))
+            .process(&mut [&mut output_l, &mut output_r]);
+    }
+
+    #[test]
     fn gain_example() {
         let mut buffer = [1.0; 512];
 

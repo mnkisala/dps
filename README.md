@@ -1,11 +1,13 @@
-# DPS
-DPS provides a collection of algorithms useful in 
-digital signal processing (mainly audio),
-as well as a cool and shiny way of composing them.
+DPS
+===
 
-## Basic usage
+DPS provides a collection of algorithms useful in digital signal processing (mainly audio), as well as a cool and shiny way of composing them.
+
+Basic usage
+-----------
 
 ### Using a single processor
+
 ```rust
   let mut buffer = [1.0; 512];
 
@@ -13,6 +15,7 @@ as well as a cool and shiny way of composing them.
 ```
 
 ### Chaining processors
+
 ```rust
   let mut buffer = [1.0; 512];
 
@@ -22,6 +25,7 @@ as well as a cool and shiny way of composing them.
 ```
 
 ### Separate inputs and outputs
+
 ```rust
   let input = [1.0; 512];
   let mut output = [0.0; 512];
@@ -29,4 +33,17 @@ as well as a cool and shiny way of composing them.
   dps::copy([&input])
       .then(dps::gain(0.5.into()))
       .process(&mut [&mut output]);
+```
+
+### Multiple channels
+
+```rust
+  let input_l = [1.0; 512];
+  let input_r = [1.0; 512];
+  let mut output_l = [0.0; 512];
+  let mut output_r = [0.0; 512];
+
+  dps::copy([&input_l, &input_r])
+      .then(dps::gain(0.5.into()))
+      .process(&mut [&mut output_l, &mut output_r]);
 ```
